@@ -1,0 +1,468 @@
+/* =========================================
+   GLOBAL RESET
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f7fafc;
+  color: #172033;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================================
+   CAREQUEUE THEME VARIABLES
+========================================= */
+
+:root {
+  color-scheme: light;
+
+  --cq-page: #f5f8fc;
+  --cq-surface: #ffffff;
+  --cq-text: #172033;
+  --cq-muted: #718096;
+  --cq-border: #e2e8f0;
+  --cq-primary: #1769e0;
+  --cq-shadow: 0 12px 32px rgba(23, 45, 78, 0.10);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --cq-page: #101827;
+  --cq-surface: #182438;
+  --cq-text: #edf3fc;
+  --cq-muted: #a7b4c7;
+  --cq-border: #2d3b50;
+  --cq-primary: #78aaff;
+  --cq-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background: var(--cq-page);
+  color: var(--cq-text);
+  transition: background-color .25s ease, color .25s ease;
+}
+
+/* =========================================
+   GLOBAL INTERACTIONS
+========================================= */
+
+button,
+a,
+input,
+select,
+textarea {
+  transition:
+    background-color .2s ease,
+    color .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease,
+    transform .2s ease;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(23, 105, 224, .28);
+  outline-offset: 2px;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+/* =========================================
+   THEME TOGGLE
+========================================= */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 11px;
+  border: 1px solid var(--cq-border);
+  border-radius: 9px;
+  background: var(--cq-surface);
+  color: var(--cq-text);
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.theme-toggle > span:first-child {
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* =========================================
+   PROFILE MENU
+========================================= */
+
+.profile-menu-wrap {
+  position: relative;
+}
+
+.profile-menu-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--cq-border);
+  border-radius: 12px;
+  padding: 6px 10px 6px 6px;
+  background: var(--cq-surface);
+  color: var(--cq-text);
+  cursor: pointer;
+}
+
+.profile-menu-avatar {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #e8f0ff;
+  color: #1769e0;
+  font-weight: 800;
+}
+
+.profile-menu-name {
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.profile-menu-chevron {
+  color: var(--cq-muted);
+}
+
+.profile-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 39;
+  border: 0;
+  background: transparent;
+  cursor: default;
+}
+
+.profile-menu-panel {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 230px;
+  padding: 10px;
+  border: 1px solid var(--cq-border);
+  border-radius: 14px;
+  background: var(--cq-surface);
+  color: var(--cq-text);
+  box-shadow: var(--cq-shadow);
+  animation: cq-menu-in .18s ease both;
+}
+
+.profile-menu-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 9px 10px 12px;
+  border-bottom: 1px solid var(--cq-border);
+}
+
+.profile-menu-heading strong {
+  font-size: 14px;
+}
+
+.profile-menu-heading span,
+.profile-menu-theme > span {
+  color: var(--cq-muted);
+  font-size: 12px;
+}
+
+.profile-menu-theme {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 9px;
+  border-bottom: 1px solid var(--cq-border);
+}
+
+.profile-menu-item {
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--cq-text);
+  text-align: left;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.profile-menu-item:hover {
+  background: rgba(100, 130, 170, .12);
+}
+
+.profile-menu-item.logout {
+  color: #dc4242;
+}
+
+/* =========================================
+   PATIENT HEADER
+========================================= */
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.dashboard-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dashboard-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+/* =========================================
+   ADMIN HEADER - IMPORTANT FIX
+========================================= */
+
+.admin-header {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px;
+  width: 100%;
+}
+
+/* Hamburger + logo must stay together */
+
+.admin-header-left {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 12px;
+  min-width: 0;
+}
+
+/* Admin brand */
+
+.admin-brand {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.admin-brand h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.admin-brand p {
+  margin: 3px 0 0;
+  font-size: 12px;
+  color: var(--cq-muted);
+}
+
+/* Admin right-side actions */
+
+.admin-header-status {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 12px;
+  margin-left: auto;
+}
+
+/* Queue status */
+
+.admin-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+}
+
+.admin-status > span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #16a34a;
+}
+
+.admin-status.paused > span {
+  background: #dc4242;
+}
+
+/* =========================================
+   DARK THEME
+========================================= */
+
+:root[data-theme="dark"] .patient-dashboard-page,
+:root[data-theme="dark"] .admin-dashboard-page {
+  background: var(--cq-page);
+  color: var(--cq-text);
+}
+
+:root[data-theme="dark"] .dashboard-header,
+:root[data-theme="dark"] .admin-header,
+:root[data-theme="dark"] .active-queue-card,
+:root[data-theme="dark"] .queue-card,
+:root[data-theme="dark"] .admin-card,
+:root[data-theme="dark"] .profile-menu-panel,
+:root[data-theme="dark"] .dashboard-sidebar {
+  background: var(--cq-surface);
+  color: var(--cq-text);
+  border-color: var(--cq-border);
+}
+
+:root[data-theme="dark"] .dashboard-brand h2,
+:root[data-theme="dark"] .admin-brand h2,
+:root[data-theme="dark"] .admin-page-heading h1,
+:root[data-theme="dark"] .dashboard-welcome h1 {
+  color: var(--cq-text);
+}
+
+:root[data-theme="dark"] .dashboard-brand p,
+:root[data-theme="dark"] .admin-brand p,
+:root[data-theme="dark"] .dashboard-welcome p,
+:root[data-theme="dark"] .admin-page-heading p {
+  color: var(--cq-muted);
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes cq-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cq-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.patient-dashboard-container,
+.admin-dashboard-container {
+  animation: cq-fade-up .35s ease both;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 600px) {
+
+  .dashboard-header,
+  .admin-header {
+    padding: 12px 14px;
+    gap: 8px;
+  }
+
+  .dashboard-header-left,
+  .admin-header-left {
+    gap: 9px;
+  }
+
+  .dashboard-brand h2,
+  .admin-brand h2 {
+    font-size: 17px;
+  }
+
+  .dashboard-brand p,
+  .admin-brand p {
+    font-size: 10px;
+  }
+
+  .header-actions,
+  .admin-header-status {
+    gap: 8px;
+  }
+
+  .profile-menu-name,
+  .profile-menu-chevron {
+    display: none;
+  }
+
+  .profile-menu-panel {
+    right: 0;
+  }
+
+  .admin-status {
+    font-size: 11px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+}

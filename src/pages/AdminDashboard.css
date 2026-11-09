@@ -1,0 +1,2209 @@
+
+/* =========================================
+   CAREQUEUE ADMIN DASHBOARD
+   Purple Design System - Light & Dark
+   ========================================= */
+
+.admin-dashboard-page {
+  min-height: 100vh;
+  background: var(--cq-bg, #f7f6fc);
+  color: var(--cq-text, #25213b);
+  font-family: 'Inter', sans-serif;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.admin-dashboard-page * {
+  box-sizing: border-box;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.admin-header {
+  min-height: 72px;
+  background: var(--cq-surface, #ffffff);
+  border-bottom: 1px solid var(--cq-border, #e8e4f1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6%;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  transition: background 0.25s ease;
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #342568, #7865d5);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 15px;
+  box-shadow: 0 4px 12px rgba(85, 65, 168, 0.2);
+}
+
+.admin-brand h2 {
+  margin: 0;
+  font-size: 19px;
+  color: var(--cq-text, #25213b);
+  font-weight: 800;
+}
+
+.admin-brand p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: var(--cq-muted, #77728c);
+}
+
+.admin-header-status {
+  display: flex;
+  align-items: center;
+}
+
+.admin-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #0f9d83;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.admin-status span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.admin-status.paused {
+  color: #e6a23c;
+}
+
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
+
+.admin-dashboard-container {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+  padding: 38px 0 60px;
+}
+
+/* =========================================
+   PAGE TITLE
+   ========================================= */
+
+.admin-page-heading {
+  margin-bottom: 28px;
+}
+
+.admin-label {
+  display: block;
+  margin-bottom: 7px;
+  color: #7865d5;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.admin-page-heading h1 {
+  margin: 0 0 7px;
+  font-size: 30px;
+  line-height: 1.15;
+  color: var(--cq-text, #25213b);
+  font-weight: 800;
+}
+
+.admin-page-heading p {
+  margin: 0;
+  color: var(--cq-muted, #77728c);
+  font-size: 14px;
+}
+
+/* =========================================
+   OVERVIEW CARDS
+   ========================================= */
+
+.admin-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.admin-summary-card {
+  background: var(--cq-surface, #ffffff);
+  border: 1px solid var(--cq-border, #e8e4f1);
+  border-radius: 15px;
+  padding: 20px;
+  min-height: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 3px 12px rgba(52, 37, 104, 0.035);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-summary-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 20px rgba(52, 37, 104, 0.07);
+}
+
+.admin-summary-card span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--cq-muted, #77728c);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.admin-summary-card strong {
+  color: var(--cq-text, #25213b);
+  font-size: 19px;
+  font-weight: 800;
+}
+
+/* =========================================
+   SETTINGS / CONTROL GRID
+   ========================================= */
+
+.admin-controls-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* =========================================
+   COMMON CARDS
+   ========================================= */
+
+.admin-control-card,
+.admin-action-card,
+.admin-reset-card,
+.admin-live-section,
+.admin-consultation-card {
+  background: var(--cq-surface, #ffffff);
+  border: 1px solid var(--cq-border, #e8e4f1);
+  border-radius: 16px;
+  box-shadow: 0 3px 14px rgba(52, 37, 104, 0.035);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.admin-control-card {
+  padding: 25px;
+}
+
+.admin-card-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.admin-card-heading span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--cq-muted, #77728c);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.admin-card-heading h2 {
+  margin: 0;
+  color: var(--cq-text, #25213b);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.control-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  background: #eeeaff;
+  color: #5541a8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.control-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* =========================================
+   SETTINGS FORM
+   ========================================= */
+
+.admin-settings-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.admin-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.admin-form-group label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--cq-text, #39344d);
+}
+
+.admin-form-group input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 13px;
+  border: 1px solid var(--cq-border, #ded9eb);
+  border-radius: 9px;
+  font-size: 14px;
+  outline: none;
+  background: var(--cq-input, #ffffff);
+  color: var(--cq-text, #25213b);
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-form-group input:focus {
+  border-color: #7865d5;
+  box-shadow: 0 0 0 3px rgba(120, 101, 213, 0.12);
+}
+
+/* =========================================
+   TREATMENT TIME
+   ========================================= */
+
+.admin-input-with-suffix {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--cq-border, #ded9eb);
+  border-radius: 9px;
+  overflow: hidden;
+  background: var(--cq-input, #ffffff);
+}
+
+.admin-input-with-suffix:focus-within {
+  border-color: #7865d5;
+  box-shadow: 0 0 0 3px rgba(120, 101, 213, 0.12);
+}
+
+.admin-input-with-suffix input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 12px 13px;
+  background: transparent;
+  color: var(--cq-text, #25213b);
+}
+
+.admin-input-with-suffix input:focus {
+  border: none;
+  box-shadow: none;
+}
+
+.admin-input-with-suffix span {
+  padding-right: 13px;
+  color: var(--cq-muted, #77728c);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* =========================================
+   SAVE SETTINGS
+   ========================================= */
+
+.save-settings-btn {
+  width: 100%;
+  margin-top: 23px;
+  padding: 13px;
+  border: none;
+  border-radius: 9px;
+  background: #5541a8;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: inherit;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.save-settings-btn:hover {
+  background: #342568;
+  transform: translateY(-1px);
+}
+
+.admin-help-text {
+  margin: 10px 0 0;
+  color: var(--cq-muted, #77728c);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* =========================================
+   CURRENT TOKEN
+   ========================================= */
+
+.current-token-box {
+  background: #f0edff;
+  border: 1px solid #ded7ff;
+  border-radius: 13px;
+  padding: 25px;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.current-token-box span {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  color: #71659e;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.current-token-box strong {
+  display: block;
+  font-size: 38px;
+  color: #5541a8;
+  margin-bottom: 5px;
+}
+
+.current-token-box small {
+  color: #77728c;
+}
+
+/* =========================================
+   NOW SERVING INPUT
+   ========================================= */
+
+.admin-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-input-row input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 12px 13px;
+  border: 1px solid var(--cq-border, #ded9eb);
+  border-radius: 9px;
+  font-size: 14px;
+  outline: none;
+  background: var(--cq-input, #ffffff);
+  color: var(--cq-text, #25213b);
+  font-family: inherit;
+}
+
+.admin-input-row input:focus {
+  border-color: #7865d5;
+  box-shadow: 0 0 0 3px rgba(120, 101, 213, 0.12);
+}
+
+.admin-input-row button {
+  flex-shrink: 0;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 9px;
+  background: #5541a8;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s ease;
+}
+
+.admin-input-row button:hover {
+  background: #342568;
+}
+
+/* =========================================
+   WAITING PATIENTS
+   ========================================= */
+
+.waiting-control-card {
+  margin-bottom: 20px;
+}
+
+.waiting-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 8px 0 10px;
+}
+
+.waiting-control button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--cq-border, #ded9eb);
+  background: var(--cq-surface, #ffffff);
+  color: var(--cq-text, #25213b);
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.waiting-control button svg {
+  width: 19px;
+  height: 19px;
+}
+
+.waiting-control button:hover:not(:disabled) {
+  background: #eeeaff;
+  border-color: #7865d5;
+  color: #5541a8;
+}
+
+.waiting-control button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.waiting-number {
+  min-width: 55px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--cq-text, #25213b);
+}
+
+/* =========================================
+   CALL NEXT PATIENT
+   ========================================= */
+
+.admin-action-card {
+  padding: 25px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.admin-action-card h2 {
+  margin: 0 0 5px;
+  color: var(--cq-text, #25213b);
+  font-size: 20px;
+}
+
+.admin-action-card p {
+  margin: 0;
+  color: var(--cq-muted, #77728c);
+  font-size: 13px;
+}
+
+.call-next-btn {
+  flex-shrink: 0;
+  padding: 14px 22px;
+  border: none;
+  border-radius: 9px;
+  background: #0f9d83;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.call-next-btn:hover:not(:disabled) {
+  background: #0b806b;
+  transform: translateY(-1px);
+}
+
+.call-next-btn:disabled {
+  background: #aeb8c6;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   PAUSE / RESUME
+   ========================================= */
+
+.admin-secondary-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.pause-btn {
+  width: auto;
+  padding: 13px 18px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  background: #fff5e5;
+  color: #a5680b;
+  border: 1px solid #f0d29b;
+  transition: background 0.2s ease;
+}
+
+.pause-btn:hover {
+  background: #ffedcb;
+}
+
+.pause-btn.resume {
+  background: #e7f7f2;
+  color: #0f806d;
+  border: 1px solid #b5e4d8;
+}
+
+.pause-btn.resume:hover {
+  background: #d7f1e9;
+}
+
+/* =========================================
+   RESET QUEUE
+   ========================================= */
+
+.admin-reset-card {
+  padding: 25px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 25px;
+  align-items: center;
+}
+
+.reset-card-content h2 {
+  margin: 0 0 7px;
+  color: var(--cq-text, #25213b);
+  font-size: 20px;
+}
+
+.reset-card-content p {
+  margin: 0;
+  color: var(--cq-muted, #77728c);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.reset-controls label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--cq-text, #39344d);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.reset-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reset-input-row input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 12px 13px;
+  border: 1px solid var(--cq-border, #ded9eb);
+  border-radius: 9px;
+  font-size: 14px;
+  outline: none;
+  background: var(--cq-input, #ffffff);
+  color: var(--cq-text, #25213b);
+  font-family: inherit;
+}
+
+.reset-input-row input:focus {
+  border-color: #dc4545;
+  box-shadow: 0 0 0 3px rgba(220, 69, 69, 0.1);
+}
+
+.reset-queue-btn {
+  flex-shrink: 0;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 9px;
+  background: #dc4545;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s ease;
+}
+
+.reset-queue-btn:hover {
+  background: #bd3030;
+}
+
+.reset-controls small {
+  display: block;
+  margin-top: 9px;
+  color: var(--cq-muted, #77728c);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* =========================================
+   LIVE QUEUE
+   ========================================= */
+
+.admin-live-section {
+  padding: 25px;
+}
+
+.admin-live-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.admin-live-heading h2 {
+  margin: 0;
+  color: var(--cq-text, #25213b);
+  font-size: 20px;
+}
+
+.admin-live-badge {
+  padding: 8px 13px;
+  border-radius: 30px;
+  background: #e7f7f2;
+  color: #0f806d;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.admin-live-badge.paused {
+  background: #fff5e5;
+  color: #a5680b;
+}
+
+.admin-live-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.admin-live-grid > div {
+  background: var(--cq-card-muted, #f8f7fc);
+  border: 1px solid var(--cq-border, #eeeaf5);
+  border-radius: 11px;
+  padding: 20px;
+  text-align: center;
+  min-width: 0;
+}
+
+.admin-live-grid span {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--cq-muted, #77728c);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.admin-live-grid strong {
+  display: block;
+  color: var(--cq-text, #25213b);
+  font-size: 18px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   NUMBER INPUTS
+   ========================================= */
+
+.admin-control-card input[type="number"],
+.admin-reset-card input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.admin-control-card input[type="number"]::-webkit-inner-spin-button,
+.admin-control-card input[type="number"]::-webkit-outer-spin-button,
+.admin-reset-card input[type="number"]::-webkit-inner-spin-button,
+.admin-reset-card input[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+/* =========================================
+   PATIENT CONSULTATION
+   ========================================= */
+
+.admin-consultation-card {
+  width: 100%;
+  margin-bottom: 24px;
+  padding: 28px;
+  color: var(--cq-text, #25213b);
+}
+
+.admin-consultation-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.admin-consultation-heading h2 {
+  margin: 0 0 7px;
+  color: var(--cq-text, #25213b);
+  font-size: 23px;
+  line-height: 1.3;
+}
+
+.admin-consultation-heading p {
+  margin: 0;
+  color: var(--cq-muted, #77728c);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.admin-consultation-token {
+  flex-shrink: 0;
+  padding: 11px 16px;
+  border-radius: 10px;
+  background: #eeeaff;
+  color: #5541a8;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+/* Patient information */
+
+.admin-consultation-patient {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.admin-consultation-patient > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 17px;
+  background: var(--cq-card-muted, #f8f7fc);
+  border: 1px solid var(--cq-border, #eeeaf5);
+  border-radius: 11px;
+  min-width: 0;
+}
+
+.admin-consultation-patient span {
+  color: var(--cq-muted, #77728c);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+}
+
+.admin-consultation-patient strong {
+  color: var(--cq-text, #25213b);
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.admin-consultation-notice {
+  margin-bottom: 20px;
+  padding: 13px 15px;
+  border: 1px solid #f0d9a7;
+  border-radius: 9px;
+  background: #fff9eb;
+  color: #8a5b0a;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Consultation form */
+
+.admin-consultation-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 19px;
+  margin-top: 20px;
+}
+
+.admin-consultation-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.admin-consultation-field.full-width {
+  grid-column: 1 / -1;
+}
+
+.admin-consultation-field label {
+  color: var(--cq-text, #39344d);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.admin-consultation-field label span {
+  color: #dc4545;
+}
+
+.admin-consultation-field input,
+.admin-consultation-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid var(--cq-border, #ded9eb);
+  border-radius: 9px;
+  outline: none;
+  background: var(--cq-input, #ffffff);
+  color: var(--cq-text, #25213b);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-consultation-field textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.admin-consultation-field input:focus,
+.admin-consultation-field textarea:focus {
+  border-color: #7865d5;
+  box-shadow: 0 0 0 3px rgba(120, 101, 213, 0.12);
+}
+
+.admin-consultation-field input::placeholder,
+.admin-consultation-field textarea::placeholder {
+  color: var(--cq-muted, #a09aae);
+}
+
+/* =========================================
+   PRESCRIPTION
+   ========================================= */
+
+.admin-prescription-section {
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 1px solid var(--cq-border, #e8e4f1);
+}
+
+.admin-prescription-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.admin-prescription-heading h3 {
+  margin: 0 0 6px;
+  color: var(--cq-text, #25213b);
+  font-size: 19px;
+}
+
+.admin-prescription-heading p {
+  margin: 0;
+  color: var(--cq-muted, #77728c);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.admin-add-medicine-btn {
+  flex-shrink: 0;
+  padding: 11px 16px;
+  border: 1px solid #7865d5;
+  border-radius: 8px;
+  background: #eeeaff;
+  color: #5541a8;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s ease;
+}
+
+.admin-add-medicine-btn:hover {
+  background: #ded7ff;
+}
+
+.admin-medicine-card {
+  margin-bottom: 15px;
+  padding: 20px;
+  border: 1px solid var(--cq-border, #e8e4f1);
+  border-radius: 12px;
+  background: var(--cq-card-muted, #faf9fd);
+}
+
+.admin-medicine-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 17px;
+}
+
+.admin-medicine-title strong {
+  color: var(--cq-text, #25213b);
+  font-size: 14px;
+}
+
+.admin-medicine-title button {
+  padding: 7px 11px;
+  border: 1px solid #ffd1d1;
+  border-radius: 7px;
+  background: #fff1f1;
+  color: #c53030;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.admin-medicine-title button:hover {
+  background: #ffe3e3;
+}
+
+.admin-medicine-title button svg {
+  width: 15px;
+  height: 15px;
+}
+
+.admin-medicine-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+
+/* =========================================
+   CONSULTATION FOOTER
+   ========================================= */
+
+.admin-consultation-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid var(--cq-border, #e8e4f1);
+}
+
+.admin-consultation-footer p {
+  margin: 0;
+  color: var(--cq-muted, #77728c);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.admin-complete-consultation-btn {
+  flex-shrink: 0;
+  padding: 13px 20px;
+  border: none;
+  border-radius: 9px;
+  background: #0f9d83;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s ease;
+}
+
+.admin-complete-consultation-btn:hover {
+  background: #0b806b;
+}
+
+/* =========================================
+   CONSULTATION COMPLETED
+   ========================================= */
+
+.admin-consultation-completed {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 20px;
+  border: 1px solid #b5e4d8;
+  border-radius: 12px;
+  background: #e7f7f2;
+}
+
+.admin-consultation-completed > span {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #0f9d83;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.admin-consultation-completed > span svg {
+  width: 19px;
+  height: 19px;
+}
+
+.admin-consultation-completed > div {
+  min-width: 0;
+}
+
+.admin-consultation-completed strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #116b59;
+  font-size: 16px;
+}
+
+.admin-consultation-completed p {
+  margin: 0 0 9px;
+  color: #287966;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.admin-consultation-completed small {
+  display: block;
+  color: #477b6b;
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   LUCIDE ICON ALIGNMENT
+   ========================================= */
+
+.admin-dashboard-page button svg {
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.admin-dashboard-page button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.admin-dashboard-page button:focus-visible {
+  outline: 2px solid #7865d5;
+  outline-offset: 3px;
+}
+
+/* =========================================
+   DARK THEME
+   ========================================= */
+
+:root[data-theme="dark"] .admin-dashboard-page {
+  background: var(--cq-bg, #11101a);
+  color: var(--cq-text, #f1eff8);
+}
+
+:root[data-theme="dark"] .admin-header,
+:root[data-theme="dark"] .admin-summary-card,
+:root[data-theme="dark"] .admin-control-card,
+:root[data-theme="dark"] .admin-action-card,
+:root[data-theme="dark"] .admin-reset-card,
+:root[data-theme="dark"] .admin-live-section,
+:root[data-theme="dark"] .admin-consultation-card {
+  background: var(--cq-surface, #1e1b2b);
+  border-color: var(--cq-border, #373247);
+}
+
+:root[data-theme="dark"] .admin-brand h2,
+:root[data-theme="dark"] .admin-page-heading h1,
+:root[data-theme="dark"] .admin-summary-card strong,
+:root[data-theme="dark"] .admin-card-heading h2,
+:root[data-theme="dark"] .admin-action-card h2,
+:root[data-theme="dark"] .reset-card-content h2,
+:root[data-theme="dark"] .admin-live-heading h2,
+:root[data-theme="dark"] .admin-consultation-heading h2,
+:root[data-theme="dark"] .admin-prescription-heading h3,
+:root[data-theme="dark"] .admin-consultation-patient strong,
+:root[data-theme="dark"] .admin-medicine-title strong,
+:root[data-theme="dark"] .admin-live-grid strong,
+:root[data-theme="dark"] .waiting-number {
+  color: var(--cq-text, #f1eff8);
+}
+
+:root[data-theme="dark"] .admin-brand p,
+:root[data-theme="dark"] .admin-page-heading p,
+:root[data-theme="dark"] .admin-summary-card span,
+:root[data-theme="dark"] .admin-help-text,
+:root[data-theme="dark"] .admin-action-card p,
+:root[data-theme="dark"] .reset-card-content p,
+:root[data-theme="dark"] .reset-controls small,
+:root[data-theme="dark"] .admin-live-grid span,
+:root[data-theme="dark"] .admin-consultation-heading p,
+:root[data-theme="dark"] .admin-prescription-heading p,
+:root[data-theme="dark"] .admin-consultation-footer p {
+  color: var(--cq-muted, #aaa4bd);
+}
+
+:root[data-theme="dark"] .admin-form-group label,
+:root[data-theme="dark"] .reset-controls label,
+:root[data-theme="dark"] .admin-consultation-field label {
+  color: var(--cq-text, #f1eff8);
+}
+
+:root[data-theme="dark"] .admin-form-group input,
+:root[data-theme="dark"] .admin-input-with-suffix,
+:root[data-theme="dark"] .admin-input-row input,
+:root[data-theme="dark"] .reset-input-row input,
+:root[data-theme="dark"] .admin-consultation-field input,
+:root[data-theme="dark"] .admin-consultation-field textarea {
+  background: var(--cq-input, #171421);
+  color: var(--cq-text, #f1eff8);
+  border-color: var(--cq-border, #484158);
+}
+
+:root[data-theme="dark"] .admin-input-with-suffix input {
+  background: transparent;
+  color: var(--cq-text, #f1eff8);
+}
+
+:root[data-theme="dark"] .admin-input-with-suffix span {
+  color: var(--cq-muted, #aaa4bd);
+}
+
+:root[data-theme="dark"] .control-icon,
+:root[data-theme="dark"] .current-token-box,
+:root[data-theme="dark"] .admin-consultation-token {
+  background: #302750;
+  border-color: #4b3b79;
+  color: #c7baff;
+}
+
+:root[data-theme="dark"] .current-token-box span,
+:root[data-theme="dark"] .current-token-box small {
+  color: #b8acd9;
+}
+
+:root[data-theme="dark"] .current-token-box strong {
+  color: #c7baff;
+}
+
+:root[data-theme="dark"] .waiting-control button {
+  background: var(--cq-input, #171421);
+  color: var(--cq-text, #f1eff8);
+  border-color: var(--cq-border, #484158);
+}
+
+:root[data-theme="dark"] .waiting-control button:hover:not(:disabled) {
+  background: #302750;
+  border-color: #7865d5;
+  color: #c7baff;
+}
+
+:root[data-theme="dark"] .admin-live-grid > div,
+:root[data-theme="dark"] .admin-consultation-patient > div,
+:root[data-theme="dark"] .admin-medicine-card {
+  background: var(--cq-card-muted, #242033);
+  border-color: var(--cq-border, #373247);
+}
+
+:root[data-theme="dark"] .admin-prescription-section,
+:root[data-theme="dark"] .admin-consultation-footer {
+  border-color: var(--cq-border, #373247);
+}
+
+:root[data-theme="dark"] .admin-add-medicine-btn {
+  background: #302750;
+  border-color: #7865d5;
+  color: #c7baff;
+}
+
+:root[data-theme="dark"] .admin-add-medicine-btn:hover {
+  background: #403466;
+}
+
+:root[data-theme="dark"] .admin-consultation-notice {
+  background: #382d1b;
+  border-color: #70572c;
+  color: #f3cf8c;
+}
+
+:root[data-theme="dark"] .admin-consultation-completed {
+  background: #12352d;
+  border-color: #276b5b;
+}
+
+:root[data-theme="dark"] .admin-consultation-completed strong {
+  color: #8de2cb;
+}
+
+:root[data-theme="dark"] .admin-consultation-completed p,
+:root[data-theme="dark"] .admin-consultation-completed small {
+  color: #b5eddf;
+}
+
+:root[data-theme="dark"] .admin-consultation-completed > span {
+  background: #0f9d83;
+}
+
+:root[data-theme="dark"] .admin-live-badge {
+  background: #12352d;
+  color: #8de2cb;
+}
+
+:root[data-theme="dark"] .admin-live-badge.paused {
+  background: #382d1b;
+  color: #f3cf8c;
+}
+
+:root[data-theme="dark"] .pause-btn {
+  background: #382d1b;
+  border-color: #70572c;
+  color: #f3cf8c;
+}
+
+:root[data-theme="dark"] .pause-btn:hover {
+  background: #49391f;
+}
+
+:root[data-theme="dark"] .pause-btn.resume {
+  background: #12352d;
+  border-color: #276b5b;
+  color: #8de2cb;
+}
+
+:root[data-theme="dark"] .pause-btn.resume:hover {
+  background: #19483c;
+}
+
+:root[data-theme="dark"] .admin-medicine-title button {
+  background: #3b2028;
+  border-color: #71353e;
+  color: #ffaaaa;
+}
+
+:root[data-theme="dark"] .admin-medicine-title button:hover {
+  background: #512a34;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 1100px) {
+  .admin-summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-controls-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-live-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .admin-reset-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .admin-header {
+    padding: 0 4%;
+  }
+
+  .admin-dashboard-container {
+    width: 92%;
+    padding-top: 25px;
+  }
+
+  .admin-page-heading h1 {
+    font-size: 25px;
+  }
+
+  .admin-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-settings-form {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-action-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .call-next-btn {
+    width: 100%;
+  }
+
+  .admin-live-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-input-row,
+  .reset-input-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-input-row button,
+  .reset-queue-btn {
+    width: 100%;
+  }
+
+  .admin-control-card,
+  .admin-reset-card,
+  .admin-live-section {
+    padding: 20px;
+  }
+
+  .admin-consultation-card {
+    padding: 20px;
+  }
+
+  .admin-consultation-heading {
+    flex-direction: column;
+  }
+
+  .admin-consultation-heading h2 {
+    font-size: 20px;
+  }
+
+  .admin-consultation-patient {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-consultation-form,
+  .admin-medicine-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-consultation-field.full-width {
+    grid-column: auto;
+  }
+
+  .admin-prescription-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-consultation-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .admin-complete-consultation-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .admin-brand {
+    gap: 8px;
+  }
+
+  .admin-logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .admin-brand h2 {
+    font-size: 16px;
+  }
+
+  .admin-brand p {
+    font-size: 10px;
+  }
+
+  .admin-control-card,
+  .admin-action-card,
+  .admin-reset-card,
+  .admin-live-section {
+    padding: 17px;
+  }
+
+  .admin-card-heading h2,
+  .admin-action-card h2,
+  .reset-card-content h2 {
+    font-size: 18px;
+  }
+}
+
+
+/* =========================================
+   PREMIUM 3D CARD & SHADOW EFFECTS
+   ========================================= */
+
+/* Main dashboard cards */
+.admin-summary-card,
+.admin-control-card,
+.admin-action-card,
+.admin-reset-card,
+.admin-live-section,
+.admin-consultation-card {
+  box-shadow:
+    0 4px 8px rgba(52, 37, 104, 0.04),
+    0 10px 25px rgba(52, 37, 104, 0.07),
+    0 1px 2px rgba(52, 37, 104, 0.04);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* Hover lift effect */
+.admin-summary-card:hover,
+.admin-control-card:hover,
+.admin-action-card:hover,
+.admin-reset-card:hover,
+.admin-live-section:hover,
+.admin-consultation-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 8px 15px rgba(52, 37, 104, 0.07),
+    0 18px 35px rgba(52, 37, 104, 0.12);
+
+  border-color: rgba(120, 101, 213, 0.35);
+}
+
+/* Inner live queue boxes */
+.admin-live-grid > div,
+.admin-consultation-patient > div,
+.admin-medicine-card,
+.current-token-box {
+  box-shadow: 0 3px 10px rgba(52, 37, 104, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-live-grid > div:hover,
+.admin-consultation-patient > div:hover,
+.admin-medicine-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(52, 37, 104, 0.10);
+}
+
+/* Dark theme shadows */
+:root[data-theme="dark"] .admin-summary-card,
+:root[data-theme="dark"] .admin-control-card,
+:root[data-theme="dark"] .admin-action-card,
+:root[data-theme="dark"] .admin-reset-card,
+:root[data-theme="dark"] .admin-live-section,
+:root[data-theme="dark"] .admin-consultation-card {
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.18),
+    0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+:root[data-theme="dark"] .admin-summary-card:hover,
+:root[data-theme="dark"] .admin-control-card:hover,
+:root[data-theme="dark"] .admin-action-card:hover,
+:root[data-theme="dark"] .admin-reset-card:hover,
+:root[data-theme="dark"] .admin-live-section:hover,
+:root[data-theme="dark"] .admin-consultation-card:hover {
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.25),
+    0 18px 35px rgba(85, 65, 168, 0.16);
+  border-color: #7865d5;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .admin-dashboard-page * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+
+/* =========================================
+   QUEUE ANALYTICS
+   ========================================= */
+
+.admin-analytics-section {
+  width: 100%;
+  margin: 28px 0;
+  padding: 26px;
+  background: var(--cq-surface, #ffffff);
+  border: 1px solid var(--cq-border, #e8e4f1);
+  border-radius: 16px;
+  box-shadow:
+    0 4px 8px rgba(52, 37, 104, 0.04),
+    0 10px 25px rgba(52, 37, 104, 0.07);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.admin-analytics-section:hover {
+  box-shadow:
+    0 8px 15px rgba(52, 37, 104, 0.07),
+    0 18px 35px rgba(52, 37, 104, 0.12);
+}
+
+.admin-analytics-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.admin-analytics-heading h2 {
+  margin: 0 0 6px;
+  color: var(--cq-text, #25213b);
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.admin-analytics-heading p {
+  margin: 0;
+  color: var(--cq-muted, #77728c);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.admin-analytics-refresh {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--cq-muted, #77728c);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.analytics-spinning {
+  animation: analytics-spin 1s linear infinite;
+}
+
+@keyframes analytics-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Analytics summary cards */
+
+.admin-analytics-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.admin-analytics-card {
+  min-width: 0;
+  padding: 21px;
+  background: var(--cq-card-muted, #f8f7fc);
+  border: 1px solid var(--cq-border, #e8e4f1);
+  border-radius: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+  box-shadow: 0 3px 10px rgba(52, 37, 104, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-analytics-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(52, 37, 104, 0.09);
+}
+
+.admin-analytics-card-icon {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #eeeaff;
+  color: #5541a8;
+}
+
+.admin-analytics-card > span {
+  color: var(--cq-muted, #77728c);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.admin-analytics-card > strong {
+  color: var(--cq-text, #25213b);
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.admin-analytics-card > small {
+  color: var(--cq-muted, #77728c);
+  font-size: 12px;
+}
+
+/* Chart and progress layout */
+
+.admin-analytics-details {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(250px, 1fr);
+  gap: 18px;
+}
+
+.admin-analytics-chart-card,
+.admin-analytics-progress-card {
+  min-width: 0;
+  padding: 22px;
+  background: var(--cq-card-muted, #f8f7fc);
+  border: 1px solid var(--cq-border, #e8e4f1);
+  border-radius: 13px;
+}
+
+.admin-analytics-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.admin-analytics-card-heading h3 {
+  margin: 0 0 5px;
+  color: var(--cq-text, #25213b);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.admin-analytics-card-heading p {
+  margin: 0;
+  color: var(--cq-muted, #77728c);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Hourly bar chart */
+
+.admin-hourly-chart {
+  height: 210px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+  align-items: end;
+  gap: 5px;
+  padding-top: 12px;
+  border-bottom: 1px solid var(--cq-border, #ded9eb);
+}
+
+.admin-hourly-bar-item {
+  height: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.admin-hourly-count {
+  min-height: 14px;
+  color: var(--cq-text, #25213b);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.admin-hourly-bar-track {
+  width: 100%;
+  height: 145px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.admin-hourly-bar {
+  width: min(100%, 20px);
+  min-height: 3px;
+  border-radius: 5px 5px 2px 2px;
+  background: #dcd7ed;
+  transition: height 0.35s ease, background 0.2s ease;
+}
+
+.admin-hourly-bar.has-arrivals {
+  background: linear-gradient(180deg, #8976e5, #5541a8);
+  box-shadow: 0 3px 9px rgba(85, 65, 168, 0.2);
+}
+
+.admin-hourly-label {
+  height: 17px;
+  color: var(--cq-muted, #77728c);
+  font-size: 9px;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* Consultation progress */
+
+.admin-analytics-progress-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-progress-value {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 12px 0 17px;
+}
+
+.admin-progress-value strong {
+  color: #5541a8;
+  font-size: 42px;
+  font-weight: 800;
+}
+
+.admin-progress-value span {
+  color: var(--cq-muted, #77728c);
+  font-size: 12px;
+}
+
+.admin-progress-track {
+  width: 100%;
+  height: 12px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #e7e3f1;
+}
+
+.admin-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #7865d5, #5541a8);
+  transition: width 0.5s ease;
+}
+
+.admin-progress-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 13px;
+  color: var(--cq-muted, #77728c);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.admin-analytics-message {
+  padding: 18px;
+  border-radius: 10px;
+  background: var(--cq-card-muted, #f8f7fc);
+  color: var(--cq-muted, #77728c);
+  font-size: 13px;
+}
+
+/* Dark theme */
+
+:root[data-theme="dark"] .admin-analytics-section {
+  background: var(--cq-surface, #1e1b2b);
+  border-color: var(--cq-border, #373247);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+}
+
+:root[data-theme="dark"] .admin-analytics-card,
+:root[data-theme="dark"] .admin-analytics-chart-card,
+:root[data-theme="dark"] .admin-analytics-progress-card,
+:root[data-theme="dark"] .admin-analytics-message {
+  background: var(--cq-card-muted, #242033);
+  border-color: var(--cq-border, #373247);
+}
+
+:root[data-theme="dark"] .admin-analytics-heading h2,
+:root[data-theme="dark"] .admin-analytics-card-heading h3,
+:root[data-theme="dark"] .admin-analytics-card > strong,
+:root[data-theme="dark"] .admin-hourly-count {
+  color: var(--cq-text, #f1eff8);
+}
+
+:root[data-theme="dark"] .admin-analytics-card-icon {
+  background: #302750;
+  color: #c7baff;
+}
+
+:root[data-theme="dark"] .admin-hourly-bar {
+  background: #494158;
+}
+
+:root[data-theme="dark"] .admin-hourly-bar.has-arrivals {
+  background: linear-gradient(180deg, #a18ff0, #7865d5);
+}
+
+:root[data-theme="dark"] .admin-progress-track {
+  background: #40394f;
+}
+
+:root[data-theme="dark"] .admin-progress-value strong {
+  color: #b9aaff;
+}
+
+/* Responsive analytics */
+
+@media (max-width: 900px) {
+  .admin-analytics-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .admin-analytics-section {
+    padding: 19px;
+  }
+
+  .admin-analytics-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-analytics-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-hourly-chart {
+    gap: 3px;
+    height: 190px;
+  }
+
+  .admin-hourly-bar-track {
+    height: 125px;
+  }
+
+  .admin-hourly-label {
+    font-size: 8px;
+  }
+
+  .admin-analytics-chart-card,
+  .admin-analytics-progress-card {
+    padding: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-analytics-section *,
+  .admin-analytics-section {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* =========================================
+   CAREQUEUE - CLASSIC PROFESSIONAL ANALYTICS
+   ========================================= */
+
+.admin-analytics-section {
+  padding: 28px;
+  background: var(--cq-surface, #fafafc);
+  border: 1px solid var(--cq-border, #e3e4eb);
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(30, 25, 60, 0.045);
+}
+
+.admin-analytics-section:hover {
+  transform: none;
+  box-shadow: 0 3px 12px rgba(30, 25, 60, 0.045);
+  border-color: var(--cq-border, #e3e4eb);
+}
+
+.admin-analytics-heading {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--cq-border, #e3e4eb);
+  margin-bottom: 22px;
+}
+
+.admin-analytics-heading h2 {
+  font-size: 21px;
+  letter-spacing: -0.4px;
+}
+
+.admin-analytics-heading p {
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.admin-analytics-refresh {
+  padding: 8px 11px;
+  border: 1px solid var(--cq-border, #e3e4eb);
+  border-radius: 7px;
+  background: var(--cq-page, #f0f1f5);
+  font-size: 11px;
+}
+
+/* Summary cards */
+
+.admin-analytics-summary {
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.admin-analytics-card {
+  padding: 19px;
+  gap: 8px;
+  background: var(--cq-surface, #fafafc);
+  border: 1px solid var(--cq-border, #e3e4eb);
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+.admin-analytics-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(30, 25, 60, 0.06);
+}
+
+.admin-analytics-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #f0edfa;
+  color: #5541a8;
+}
+
+.admin-analytics-card > span {
+  font-size: 10px;
+  letter-spacing: 0.055em;
+}
+
+.admin-analytics-card > strong {
+  font-size: 28px;
+  letter-spacing: -0.7px;
+}
+
+.admin-analytics-card > small {
+  font-size: 11px;
+}
+
+/* Chart panels */
+
+.admin-analytics-chart-card,
+.admin-analytics-progress-card {
+  padding: 21px;
+  background: var(--cq-surface, #fafafc);
+  border: 1px solid var(--cq-border, #e3e4eb);
+  border-radius: 10px;
+}
+
+.admin-analytics-card-heading {
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--cq-border, #e3e4eb);
+  margin-bottom: 18px;
+}
+
+.admin-analytics-card-heading h3 {
+  font-size: 15px;
+  letter-spacing: -0.2px;
+}
+
+.admin-analytics-card-heading p {
+  font-size: 11px;
+}
+
+/* Hourly chart */
+
+.admin-hourly-chart {
+  height: 195px;
+  gap: 5px;
+  border-bottom: 1px solid var(--cq-border, #e3e4eb);
+}
+
+.admin-hourly-bar-track {
+  height: 132px;
+}
+
+.admin-hourly-bar {
+  width: min(70%, 17px);
+  border-radius: 3px 3px 0 0;
+  background: #e2dfed;
+}
+
+.admin-hourly-bar.has-arrivals {
+  background: #6552ad;
+  box-shadow: none;
+}
+
+.admin-hourly-count {
+  font-size: 10px;
+  color: var(--cq-text, #25213b);
+}
+
+.admin-hourly-label {
+  color: var(--cq-muted, #77728c);
+  font-size: 9px;
+}
+
+/* Consultation progress */
+
+.admin-progress-value {
+  margin: 18px 0;
+}
+
+.admin-progress-value strong {
+  font-size: 38px;
+  color: #5541a8;
+  font-weight: 750;
+}
+
+.admin-progress-value span {
+  font-size: 11px;
+}
+
+.admin-progress-track {
+  height: 9px;
+  border-radius: 5px;
+  background: #e9e7ef;
+}
+
+.admin-progress-fill {
+  border-radius: 5px;
+  background: #5541a8;
+}
+
+.admin-progress-footer {
+  padding-top: 13px;
+  border-top: 1px solid var(--cq-border, #e3e4eb);
+  font-size: 11px;
+}
+
+/* Dark theme */
+
+:root[data-theme="dark"] .admin-analytics-section {
+  background: var(--cq-surface, #1e1b2b);
+  border-color: var(--cq-border, #373247);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+:root[data-theme="dark"] .admin-analytics-section:hover {
+  border-color: var(--cq-border, #373247);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+:root[data-theme="dark"] .admin-analytics-card,
+:root[data-theme="dark"] .admin-analytics-chart-card,
+:root[data-theme="dark"] .admin-analytics-progress-card {
+  background: var(--cq-surface, #1e1b2b);
+  border-color: var(--cq-border, #373247);
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] .admin-analytics-refresh {
+  background: var(--cq-page, #11101a);
+  border-color: var(--cq-border, #373247);
+}
+
+:root[data-theme="dark"] .admin-analytics-card-icon {
+  background: #302750;
+  color: #c7baff;
+}
+
+:root[data-theme="dark"] .admin-hourly-bar {
+  background: #40394f;
+}
+
+:root[data-theme="dark"] .admin-hourly-bar.has-arrivals,
+:root[data-theme="dark"] .admin-progress-fill {
+  background: #8976d5;
+}
+
+:root[data-theme="dark"] .admin-progress-track {
+  background: #40394f;
+}
+
+:root[data-theme="dark"] .admin-progress-value strong {
+  color: #b9aaff;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+  .admin-analytics-section {
+    padding: 18px;
+  }
+
+  .admin-analytics-card {
+    padding: 16px;
+  }
+
+  .admin-analytics-chart-card,
+  .admin-analytics-progress-card {
+    padding: 16px;
+  }
+}
+
+
+/* =========================================
+   ANALYTICS CHART - FINAL REFINEMENTS
+   ========================================= */
+
+/* Cleaner hourly labels: display only every 4 hours */
+.admin-hourly-label {
+  font-size: 0;
+}
+
+.admin-hourly-bar-item:nth-child(4n + 1) .admin-hourly-label {
+  font-size: 9px;
+}
+
+/* Subtle horizontal grid lines */
+.admin-hourly-chart {
+  background-image: repeating-linear-gradient(
+    to top,
+    transparent 0,
+    transparent calc(25% - 1px),
+    var(--cq-border, #e3e4eb) calc(25% - 1px),
+    var(--cq-border, #e3e4eb) 25%
+  );
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* Keep chart bars above the grid */
+.admin-hourly-bar-track {
+  position: relative;
+  z-index: 1;
+}
+
+/* Dark theme grid */
+:root[data-theme="dark"] .admin-hourly-chart {
+  background-image: repeating-linear-gradient(
+    to top,
+    transparent 0,
+    transparent calc(25% - 1px),
+    rgba(255, 255, 255, 0.08) calc(25% - 1px),
+    rgba(255, 255, 255, 0.08) 25%
+  );
+}

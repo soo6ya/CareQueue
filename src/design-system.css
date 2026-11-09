@@ -1,0 +1,284 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  color-scheme: light;
+
+  --cq-primary: #5541A8;
+  --cq-primary-hover: #443287;
+  --cq-accent: #7865D5;
+  --cq-soft-purple: #EAE5F5;
+
+  /* Soft Lavender Light Theme */
+  /* Light theme */
+--cq-page: #F0F1F5;
+--cq-surface: #FAFAFC;
+--cq-text: #211C35;
+--cq-muted: #77738B;
+--cq-border: #E3E4EB;
+
+--cq-shadow:
+  0 3px 8px rgba(35, 30, 60, 0.04),
+  0 10px 25px rgba(35, 30, 60, 0.07),
+  0 2px 4px rgba(35, 30, 60, 0.03);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --cq-primary: #A18CEB;
+  --cq-primary-hover: #B6A5F3;
+  --cq-accent: #A18CEB;
+  --cq-soft-purple: #30284B;
+
+  --cq-page: #151320;
+  --cq-surface: #201D2E;
+  --cq-text: #F3F0FC;
+  --cq-muted: #AAA4BC;
+  --cq-border: #383348;
+
+  --cq-success: #43C5A5;
+  --cq-warning: #F2BC65;
+  --cq-danger: #F07878;
+
+  --cq-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif !important;
+  background: var(--cq-page) !important;
+  color: var(--cq-text) !important;
+  transition: background-color .25s ease, color .25s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: 'Inter', sans-serif !important;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  transition: color .2s ease;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(120, 101, 213, .35);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--cq-soft-purple);
+  color: var(--cq-text);
+}
+
+/* Common page surfaces */
+
+.dashboard-page,
+.token-page,
+.queue-status-page {
+  background: var(--cq-page) !important;
+  color: var(--cq-text);
+}
+
+.auth-page {
+  background: var(--cq-page) !important;
+}
+
+.auth-card,
+.active-queue-card,
+.doctor-card,
+.queue-preview,
+.selection-card,
+.personal-details-card,
+.queue-progress-card,
+.queue-stat-card {
+  background: var(--cq-surface) !important;
+  color: var(--cq-text);
+  border-color: var(--cq-border) !important;
+  box-shadow: var(--cq-shadow);
+}
+
+/* Primary buttons */
+
+.primary-btn,
+.auth-btn,
+.get-token-btn,
+.generate-token-btn,
+.personal-save-btn {
+  background: var(--cq-primary) !important;
+  color: #FFFFFF !important;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.primary-btn:hover,
+.auth-btn:hover,
+.get-token-btn:hover,
+.generate-token-btn:hover,
+.personal-save-btn:hover {
+  background: var(--cq-primary-hover) !important;
+}
+
+/* Typography */
+
+.hero h1,
+.welcome-section h1,
+.token-heading h1,
+.queue-status-heading h1,
+.personal-details-heading h1 {
+  color: var(--cq-text);
+  letter-spacing: -0.7px;
+}
+
+.hero h1 span,
+.dashboard-label,
+.token-heading > span,
+.queue-status-heading > span,
+.personal-details-heading > span {
+  color: var(--cq-primary) !important;
+}
+
+/* Theme-aware text */
+
+.auth-subtitle,
+.hero-description,
+.welcome-section > p:last-child,
+.personal-details-heading p {
+  color: var(--cq-muted);
+}
+
+/* Theme-aware borders */
+
+.auth-card input,
+.personal-form-group input,
+.personal-form-group textarea {
+  border-color: var(--cq-border);
+}
+
+.auth-card input:focus,
+.personal-form-group input:focus,
+.personal-form-group textarea:focus {
+  border-color: var(--cq-primary);
+  outline-color: var(--cq-accent);
+}
+
+/* Smooth interactions */
+
+button,
+a,
+.auth-card,
+.active-queue-card,
+.doctor-card,
+.quick-card {
+  transition:
+    background-color .2s ease,
+    color .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease,
+    transform .2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* Premium card shadows and animations */
+
+.auth-card,
+.active-queue-card,
+.doctor-card,
+.queue-preview,
+.selection-card,
+.personal-details-card,
+.queue-progress-card,
+.queue-stat-card,
+.admin-summary-card,
+.admin-control-card,
+.admin-action-card,
+.admin-reset-card,
+.admin-live-section,
+.admin-consultation-card,
+.quick-card {
+  background: var(--cq-surface);
+  border: 1px solid var(--cq-border);
+
+  box-shadow:
+    0 3px 8px rgba(35, 30, 60, 0.04),
+    0 10px 25px rgba(35, 30, 60, 0.07);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* Gentle floating effect */
+
+.auth-card:hover,
+.active-queue-card:hover,
+.doctor-card:hover,
+.queue-preview:hover,
+.selection-card:hover,
+.personal-details-card:hover,
+.queue-progress-card:hover,
+.queue-stat-card:hover,
+.admin-summary-card:hover,
+.admin-control-card:hover,
+.admin-action-card:hover,
+.admin-reset-card:hover,
+.admin-consultation-card:hover,
+.quick-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 7px 14px rgba(35, 30, 60, 0.06),
+    0 18px 35px rgba(35, 30, 60, 0.12);
+
+  border-color: rgba(120, 101, 213, 0.35);
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-card,
+  .active-queue-card,
+  .doctor-card,
+  .queue-preview,
+  .selection-card,
+  .personal-details-card,
+  .queue-progress-card,
+  .queue-stat-card,
+  .admin-summary-card,
+  .admin-control-card,
+  .admin-action-card,
+  .admin-reset-card,
+  .admin-live-section,
+  .admin-consultation-card,
+  .quick-card {
+    transition: none !important;
+    transform: none !important;
+  }
+}
