@@ -5,6 +5,7 @@ import java.util.List;
 
 import jakarta.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -26,6 +27,9 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+
+    @Value("${app.frontend-origin:http://localhost:5173}")
+    private String frontendOrigin;
 
     public SecurityConfig(
         JwtAuthenticationFilter jwtAuthenticationFilter
@@ -73,7 +77,6 @@ public class SecurityConfig {
 
             .authorizeHttpRequests(auth -> auth
 
-                // Public authentication endpoints
                 .requestMatchers(
                     "/api/auth/register",
                     "/api/auth/login",
@@ -84,24 +87,20 @@ public class SecurityConfig {
                     "/api/doctor-profile/public"
                 ).permitAll()
 
-                // Authenticated account endpoint
                 .requestMatchers(
                     "/api/auth/me"
                 ).authenticated()
 
-                // Public queue status
                 .requestMatchers(
                     HttpMethod.GET,
                     "/api/queue/state"
                 ).permitAll()
 
-                // Admin-only queue management
                 .requestMatchers(
                     HttpMethod.PUT,
                     "/api/queue/state"
                 ).hasRole("ADMIN")
 
-                // Patient-only queue operations
                 .requestMatchers(
                     HttpMethod.POST,
                     "/api/queue/join"
@@ -112,8 +111,6 @@ public class SecurityConfig {
                     "/api/queue/leave"
                 ).hasRole("PATIENT")
 
-                // Admin-only endpoints
-                // Admin-only endpoints
                 .requestMatchers(
                     "/api/queue/current-patient",
                     "/api/admin/doctor-profile",
@@ -121,25 +118,21 @@ public class SecurityConfig {
                     "/api/admin/queue-analytics"
                 ).hasRole("ADMIN")
 
-                // Patient-only history
                 .requestMatchers(
                     HttpMethod.GET,
                     "/api/patient/history"
                 ).hasRole("PATIENT")
 
-                // Patient-only appointment recipient email
                 .requestMatchers(
                     HttpMethod.GET,
                     "/api/doctor-profile/appointment-email"
                 ).hasRole("PATIENT")
 
-                // Patient-only emergency number
                 .requestMatchers(
                     HttpMethod.GET,
                     "/api/doctor-profile/emergency-number"
                 ).hasRole("PATIENT")
 
-                // Consultation access
                 .requestMatchers(
                     HttpMethod.GET,
                     "/api/consultations"
@@ -150,7 +143,6 @@ public class SecurityConfig {
                     "/api/consultations"
                 ).hasRole("ADMIN")
 
-                // Patient-only push subscription management
                 .requestMatchers(
                     HttpMethod.POST,
                     "/api/push/subscribe"
@@ -161,7 +153,6 @@ public class SecurityConfig {
                     "/api/push/unsubscribe"
                 ).hasRole("PATIENT")
 
-                // All other endpoints require authentication
                 .anyRequest().authenticated()
             )
 
@@ -195,7 +186,8 @@ public class SecurityConfig {
             List.of(
                 "http://localhost:5173",
                 "http://127.0.0.1:5173",
-                "http://10.236.227.205:5173"
+                "http://10.236.227.205:5173",
+                frontendOrigin
             )
         );
 
