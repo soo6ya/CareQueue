@@ -42,7 +42,7 @@ npm run dev
 ### Important prototype limitations
 
 - This is still a frontend-only prototype. Browser storage is not a secure authentication or authorization system. The SHA-256 digest is only a temporary improvement for the demo; production authentication must be implemented by the Spring Boot backend using server-side password hashing (for example BCrypt), sessions/JWT, and role checks.
-- Admin login is still a temporary prototype gate that accepts any non-empty email and password. Do not use it for real hospital access.
+- Admin login is still a temporary prototype gate that accepts any non-empty email and password. Do not use it for real clinical deployments.
 - Patient profiles created before password verification was added do not contain a password digest, because the earlier version did not save passwords. Those legacy test profiles cannot be password-verified by this frontend update; create a fresh test profile with a different email or migrate accounts through the backend.
 - Browser `localStorage` data is local to the browser and is not a replacement for a shared PostgreSQL database.
 
@@ -57,3 +57,4 @@ This version includes a browser service worker, a patient-side **Enable device n
 Follow `backend/README.md` to create the PostgreSQL database, generate VAPID keys, start Spring Boot, enable notifications on each device, and send a test notification. Production requires HTTPS.
 
 **Important:** queue data is still stored in browser localStorage. Cross-device automatic queue alerts become fully operational only after the queue and consultation actions are moved into the shared Spring Boot/PostgreSQL backend and invoke the push service after each state change. The included `/api/push/test` route is a delivery test, not the final production event integration. Secure the development test/send routes before deployment.
+
