@@ -207,20 +207,6 @@ The backend may take some time to respond after an idle period if it is hosted o
 
 Contributions from teammates are welcome.
 
-1. Ask the repository owner for collaborator access.
-2. Clone the repository after access is granted.
-3. Create a feature branch for your changes.
-4. Make and test your changes locally.
-5. Push the branch and open a pull request for review.
-
-Suggested branch naming:
-
-```text
-feature/short-description
-fix/short-description
-docs/short-description
-```
-
 Please avoid committing secrets, personal data, generated build folders, or local environment files.
 
 ## Security
