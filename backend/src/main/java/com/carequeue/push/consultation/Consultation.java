@@ -190,6 +190,12 @@ public class Consultation {
         @Column(name = "patient_address", length = 1000)
         private String address;
 
+        @Column(name = "patient_age")
+        private Integer age;
+
+        @Column(name = "patient_gender", length = 40)
+        private String gender;
+
         protected PatientDetails() {
         }
 
@@ -197,12 +203,16 @@ public class Consultation {
             String name,
             String phone,
             String email,
-            String address
+            String address,
+            Integer age,
+            String gender
         ) {
             this.name = name;
             this.phone = phone;
             this.email = email;
             this.address = address;
+            this.age = age;
+            this.gender = gender;
         }
 
         public String getName() {
@@ -219,6 +229,14 @@ public class Consultation {
 
         public String getAddress() {
             return address;
+        }
+
+        public Integer getAge() {
+            return age;
+        }
+
+        public String getGender() {
+            return gender;
         }
     }
 

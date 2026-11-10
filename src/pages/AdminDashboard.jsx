@@ -180,6 +180,7 @@ function AdminDashboard() {
           profile: {
             name: responseData.name || "",
             age: responseData.age ?? null,
+            gender: responseData.gender || "",
             phone: responseData.phone || "",
             address: responseData.address || "",
           },
@@ -473,6 +474,7 @@ function AdminDashboard() {
       patientDetails: {
         name: patientName,
         age: patientProfile.age ?? null,
+        gender: patientProfile.gender || "",
         phone:
           patientProfile.phone ||
           patientProfile.phoneNumber ||

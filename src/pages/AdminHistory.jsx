@@ -658,7 +658,11 @@ function AdminHistory() {
                 <div className="admin-history-detail-grid">
                   <div>
                     <span>Patient ID</span>
-                    <strong>{displayValue(patientDetails.id)}</strong>
+                    <strong>
+                      {displayValue(
+                        patientDetails.id || selectedRecord.patientRecordId
+                      )}
+                    </strong>
                   </div>
 
                   <div>

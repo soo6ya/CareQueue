@@ -656,3 +656,143 @@ button.cq-game-option:hover {
 @media (prefers-reduced-motion: reduce) {
   .cq-floating-game-button, .cq-games-panel { animation: none; transition: none; }
 }
+
+
+/* =========================================================
+   MOBILE GAME PANEL FIX
+   Keeps the floating launcher accessible and fits the
+   game window to smaller phone screens.
+========================================================= */
+
+@media (max-width: 600px) {
+  .cq-floating-games {
+    position: fixed !important;
+    top: auto !important;
+    right: max(12px, env(safe-area-inset-right)) !important;
+    bottom: max(12px, env(safe-area-inset-bottom)) !important;
+    left: auto !important;
+    transform: none !important;
+    z-index: 2147483000 !important;
+  }
+
+  .cq-floating-game-button {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 16px;
+  }
+
+  .cq-games-panel {
+    position: absolute;
+    right: 0;
+    left: auto;
+    bottom: 62px;
+    width: min(340px, calc(100vw - 24px));
+    max-width: calc(100vw - 24px);
+    max-height: min(68dvh, calc(100dvh - 92px));
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    border-radius: 16px;
+  }
+
+  .cq-games-header { padding: 13px 15px; }
+  .cq-games-content { padding: 13px; }
+  .cq-games-content h4 { margin-bottom: 10px; }
+
+  .cq-game-option {
+    min-height: 58px;
+    padding: 10px;
+    gap: 9px;
+  }
+
+  .cq-game-option-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 19px;
+  }
+
+  .cq-game-board {
+    width: min(100%, 220px);
+    gap: 6px;
+    margin-bottom: 13px;
+  }
+
+  .cq-game-cell {
+    min-width: 0;
+    font-size: clamp(24px, 8vw, 30px);
+    border-radius: 8px;
+  }
+
+  .cq-game-status {
+    margin: 3px 0 11px;
+    font-size: 13px;
+  }
+
+  .cq-game-restart { padding: 10px; font-size: 12px; }
+
+  .cq-snake-board { width: min(100%, 220px); }
+
+  .cq-snake-scores {
+    max-width: 220px;
+    margin-bottom: 9px;
+  }
+
+  .cq-snake-scores strong { font-size: 16px; }
+  .cq-snake-instructions { margin: 9px 0; }
+  .cq-snake-controls { gap: 4px; margin-bottom: 10px; }
+  .cq-snake-controls div { gap: 6px; }
+
+  .cq-snake-controls button {
+    width: 36px;
+    height: 32px;
+    font-size: 18px;
+  }
+
+  .cq-memory-stats {
+    padding: 8px 6px;
+    margin-bottom: 9px;
+  }
+
+  .cq-memory-board {
+    width: min(100%, 236px);
+    gap: 6px;
+    margin: 9px auto 12px;
+  }
+
+  .cq-memory-card {
+    font-size: clamp(18px, 6vw, 22px);
+    border-radius: 8px;
+  }
+
+  .cq-memory-victory { padding: 9px; font-size: 11px; }
+}
+
+@media (max-width: 360px) {
+  .cq-games-panel {
+    width: calc(100vw - 20px);
+    max-width: calc(100vw - 20px);
+    right: -2px;
+    max-height: min(65dvh, calc(100dvh - 88px));
+  }
+
+  .cq-games-content { padding: 11px; }
+
+  .cq-game-board,
+  .cq-snake-board {
+    width: min(100%, 195px);
+  }
+
+  .cq-memory-board {
+    width: min(100%, 210px);
+    gap: 5px;
+  }
+}
+
+@supports not (height: 100dvh) {
+  @media (max-width: 600px) {
+    .cq-games-panel { max-height: calc(100vh - 92px); }
+  }
+}

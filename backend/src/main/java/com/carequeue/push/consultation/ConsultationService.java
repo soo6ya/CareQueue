@@ -75,13 +75,17 @@ public class ConsultationService {
                 patientName,
                 "",
                 email,
-                ""
+                "",
+                null,
+                null
             )
             : new PatientDetails(
                 detailsRequest.name(),
                 detailsRequest.phone(),
                 detailsRequest.email(),
-                detailsRequest.address()
+                detailsRequest.address(),
+                detailsRequest.age(),
+                detailsRequest.gender()
             );
 
         List<MedicinePrescription> medicines =
@@ -184,10 +188,13 @@ public class ConsultationService {
             details == null
                 ? null
                 : new PatientDetailsResponse(
+                    consultation.getPatientRecordId(),
                     details.getName(),
                     details.getPhone(),
                     details.getEmail(),
-                    details.getAddress()
+                    details.getAddress(),
+                    details.getAge(),
+                    details.getGender()
                 );
 
         return new ConsultationResponse(
@@ -248,7 +255,9 @@ public class ConsultationService {
         String name,
         String phone,
         String email,
-        String address
+        String address,
+        Integer age,
+        String gender
     ) {
     }
 
@@ -281,10 +290,13 @@ public class ConsultationService {
     }
 
     public record PatientDetailsResponse(
+        String id,
         String name,
         String phone,
         String email,
-        String address
+        String address,
+        Integer age,
+        String gender
     ) {
     }
 

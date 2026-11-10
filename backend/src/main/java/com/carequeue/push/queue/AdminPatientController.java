@@ -100,6 +100,7 @@ public class AdminPatientController {
         response.put("patientRecordId", patient.getId());
         response.put("name", patient.getName());
         response.put("age", patient.getAge());
+        response.put("gender", patient.getGender());
         response.put("email", patient.getEmail());
         response.put("phone", patient.getPhone());
         response.put("address", patient.getAddress());

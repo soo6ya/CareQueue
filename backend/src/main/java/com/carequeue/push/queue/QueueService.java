@@ -142,13 +142,16 @@ public class QueueService {
                 "No registered patient found for the currently serving token."
             ));
 
+        var patientAccount = userAccountRepository
+            .findByEmailIgnoreCase(ticket.getPatientEmail())
+            .orElse(null);
+
         String patientName = ticket.getPatientName();
 
         if (patientName == null || patientName.isBlank()) {
-            patientName = userAccountRepository
-                .findByEmailIgnoreCase(ticket.getPatientEmail())
-                .map(account -> account.getName())
-                .orElse("Registered Patient");
+            patientName = patientAccount != null
+                ? patientAccount.getName()
+                : "Registered Patient";
         }
 
         Map<String, Object> response = new LinkedHashMap<>();
@@ -160,10 +163,23 @@ public class QueueService {
         response.put("name", patientName);
         response.put("email", ticket.getPatientEmail());
 
-        // These details are not currently stored in QueueTicket.
-        response.put("age", null);
-        response.put("phone", null);
-        response.put("address", null);
+        // Read profile details from the registered patient account.
+        response.put(
+            "age",
+            patientAccount != null ? patientAccount.getAge() : null
+        );
+        response.put(
+            "gender",
+            patientAccount != null ? patientAccount.getGender() : null
+        );
+        response.put(
+            "phone",
+            patientAccount != null ? patientAccount.getPhone() : null
+        );
+        response.put(
+            "address",
+            patientAccount != null ? patientAccount.getAddress() : null
+        );
 
         return response;
     }
@@ -818,10 +834,16 @@ public class QueueService {
         List<QueueTicket> tickets =
             ticketRepository
                 .findByStatusInAndEstimatedConsultationAtIsNotNull(
-                    List.of("WAITING", "CALLED")
+                    List.of("WAITING")
                 );
 
         for (QueueTicket ticket : tickets) {
+
+            // Estimated-time reminders are only for patients still waiting.
+            // Once the doctor calls a patient, their ticket status becomes CALLED.
+            if (!"WAITING".equals(ticket.getStatus())) {
+                continue;
+            }
 
             if (!activeSession.equals(ticket.getQueueSessionId())) {
                 continue;
